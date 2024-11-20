@@ -18,13 +18,14 @@ export const getUsersFromFirestore = async () => {
 export const deleteUserFromFirestore = async (id) =>{
   await deleteDoc(doc(db, "usuarios", id));
 }
-export const addUserToFirestore = async (nombre) =>{
-  const docRef = await addDoc(collection(db, "usuarios"), { nombre })
+
+export const addUserToFirestore = async (nombre, email) =>{
+  const docRef = await addDoc(collection(db, "usuarios"), { nombre , email})
   console.log(docRef);
   return docRef.id
 
 }
 
 export const updateUserFromFirestore =async (usuario) =>{
-  await updateDoc(doc(db, "usuarios", usuario.id), { nombre: usuario.nombre });
+  await updateDoc(doc(db, "usuarios", usuario.id), { nombre: usuario.nombre ,email: usuario.email});
 }

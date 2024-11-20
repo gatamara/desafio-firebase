@@ -34,16 +34,16 @@ const actions = {
     console.log('usuarios en firestore',usuarios  );
     commit("SET_USUARIOS", usuarios);
   },
-  async addUsuario({ commit }, nombre) {
-    const id= await addUserToFirestore(nombre)
-    commit("ADD_USUARIO", {id, nombre});
+  async addUsuario({ commit }, { nombre, email }) {
+    const id = await addUserToFirestore(nombre, email);
+    commit("ADD_USUARIO", { id, nombre, email });
   },
   async deleteUsuario({ commit }, id) {
     await deleteUserFromFirestore(id)
     commit("REMOVE_USUARIO", id);
   },
   async updateUsuario({ commit }, usuario) {
-    await updateUserFromFirestore(usuario)
+    await updateUserFromFirestore(usuario);
     commit("UPDATE_USUARIO", usuario);
   },
   setSelectedUser({ commit }, usuario) {

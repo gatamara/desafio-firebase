@@ -3,7 +3,7 @@
     <h2>se ve el componente</h2>
     <ul>
       <li v-for="usuario in usuarios" :key="usuario.id">
-        {{ usuario.nombre }}
+        {{ usuario.nombre }} - {{ usuario.email }}
         <button @click="editUsuario(usuario)">Editar</button>
 
         <button @click="deleteUsuario(usuario.id)">Eliminar</button>
